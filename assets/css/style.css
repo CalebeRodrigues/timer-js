@@ -42,6 +42,10 @@ button {
     cursor: pointer;
 }
 
+.timer-pause {
+    color: red;
+}
+
 .iniciar:hover {
     background-color: rgb(57, 160, 57);
 }

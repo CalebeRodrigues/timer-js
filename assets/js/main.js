@@ -1,16 +1,22 @@
-const data = new Date('10/09/2002 00:00:00');
+const data = new Date('2002-11-27 00:00:00');
+let time;
+
 const relogio = document.querySelector('.relogio');
 
 const btnIniciar = document.querySelector(".iniciar");
 const btnPausar = document.querySelector(".pausar");
 const btnZerar = document.querySelector(".zerar");
 
-btnIniciar.addEventListener('click', function () {iniciarTimer();});
+btnIniciar.addEventListener('click', 
+  function () {    
+    relogio.classList.remove('timer-pause');
+    clearInterval(time);
+    iniciarTimer();
+});
 
 btnPausar.addEventListener('click', function (e) {
-    setTimeout(function () {
-        clearInterval(time);
-    }, 1);
+    clearInterval(time);
+    relogio.classList.add('timer-pause');
 });
 
 btnZerar.addEventListener('click', function (e) {
@@ -18,10 +24,10 @@ btnZerar.addEventListener('click', function (e) {
     data.setMinutes(0);
     data.setSeconds(0);
     data.setMilliseconds(0);
+    relogio.classList.remove('timer-pause');
+    clearInterval(time);
     relogio.innerHTML = '00:00:00';
-})
-
-let time;
+});
 
 function iniciarTimer () {
     time = setInterval(function () {
